@@ -16,7 +16,7 @@ $( document ).ready(function() {
         bgColorInner: "#2b2b2b",
         bgColorOuter: "#000000"
     });
-	$(".home").fadeIn(1000);
+	$(".home").fadeIn(2000);
 
 });
 

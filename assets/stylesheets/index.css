@@ -126,9 +126,17 @@ header {
 	-ms-transform: translateY(-50%);
 	transform: translateY(-50%);
 	margin: auto;
-	height: 200px;
-	width: 90%;
+	height: 250px;
+	width: 85%;
 }
+
+.home-back{
+	width: 400px;
+	padding: 25px 25px 25px 25px;
+	background: rgba(51, 48, 48, 0.7);
+	border-radius: 25px 25px;
+}
+
 .home-name{
     margin-bottom: .2rem;
     color: #fff;
