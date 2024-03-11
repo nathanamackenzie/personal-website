@@ -12,7 +12,9 @@ The project utilizes AWS S3 static website hosting to store its source code. A C
 ### Back-End 
 To augment the website's capabilities, API Gateway is employed alongside DynamoDB to record user interactions during their visits. EventBridge filters DynamoDB updates to notify SNS whenever a new user session has been created. 
 
-![Architecture](img/architecture.PNG.png)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/nathanamackenzie/personal-website/main/img/architecture.PNG" alt="architecture" width="600">
+</p>
 
 ## Licence
 
