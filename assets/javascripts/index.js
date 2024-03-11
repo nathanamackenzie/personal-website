@@ -1,6 +1,10 @@
-var sessionID = Date.now()
+var sessionID = Date.now().toString();
 
 $( document ).ready(function() {
+
+    postAPI([["action", {'S': "load"}], 
+            ["resource", {"S": "homepage"}]]);
+
 	//Init waterpipe
 	var smokyBG = $('#wavybg-wrapper').waterpipe({
         //Default values
@@ -18,38 +22,51 @@ $( document ).ready(function() {
         bgColorInner: "#2b2b2b",
         bgColorOuter: "#000000"
     });
-	$(".home").fadeIn(2000);
-
-    sessionID = Date.now()
+	$(".home").fadeIn(1500);
      
-   
 });
 
-console.log(getNow())
+$("#linkedin").on("click",function(){
+    postAPI([["action", {'S': "click"}], 
+            ["resource", {"S": "linkedin"}]]);
+})
 
-function test(blah){
-    console.log(sessionID)
-    
-    fetch("https://ys8no68323.execute-api.us-east-1.amazonaws.com/test/visit",{
-        method: "POST",
-        body: JSON.stringify({
-            "TableName": "test",
-            "Item": {
-    	        "sessionID": {
-        	        "S":"1"
-                },
-                "epoch":{
-        	        "N": Date.now().toString()
-                },
-                "action":{
-        	        "S": blah
-                }
+$("#email").on("click",function(){
+    postAPI([["action", {'S': "click"}], 
+            ["resource", {"S": "email"}]]);
+})
+
+$("#github").on("click",function(){
+    postAPI([["action", {'S': "click"}], 
+            ["resource", {"S": "github"}]]);
+})
+
+
+function postAPI(jsonArgs){
+
+    let jsonRequest = {
+        "TableName": "visit_log",
+        "Item": {
+            "sessionID": {
+                "N": sessionID
+            },
+            "date-time":{
+                "S": getDateTime()
             }
-        })
+        }
+    };
+
+    for(let i = 0; i < jsonArgs.length; i++){
+        jsonRequest.Item[jsonArgs[i][0]] = jsonArgs[i][1]
+    }
+
+    fetch("https://0wha124295.execute-api.us-east-1.amazonaws.com/production/visit",{
+        method: "POST",
+        body: JSON.stringify(jsonRequest)
     }).catch(error => { console.log(error); });
 }
 
-function getNow(){
+function getDateTime(){
 
     var currentdate = new Date(); 
     var datetime = (currentdate.getMonth()+1) + "/"
