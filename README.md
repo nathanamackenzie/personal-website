@@ -10,4 +10,10 @@ The cloud infrastructure for this project was configured using Terraform and can
 The project utilizes AWS S3 static website hosting to store its source code. A CloudFront distribution is set up, enabling the use of ACM-generated SSL certificates for HTTPS. Traffic redirection from NateMackenzie.com to Route53 Nameservers is facilitated through GoDaddy DNS servers, with an A-record mapping to the S3 website.
 
 ### Back-End 
-To augment the website's capabilities, API Gateway is employed alongside DynamoDB to record user interactions during their visits.
+To augment the website's capabilities, API Gateway is employed alongside DynamoDB to record user interactions during their visits. EventBridge filters DynamoDB updates to notify SNS whenever a new user session has been created. 
+
+![Architecture](img/architecture.PNG.png)
+
+## Licence
+
+Home-Lab is [MIT licenced](LICENSE)
