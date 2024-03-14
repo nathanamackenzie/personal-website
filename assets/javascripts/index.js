@@ -8,7 +8,7 @@ $( document ).ready(function() {
 	//Init waterpipe
 	var smokyBG = $('#wavybg-wrapper').waterpipe({
         //Default values
-        gradientStart: '#e0e0e0',
+        gradientStart: '#9DB2BF',
         gradientEnd: '#7d7d7d',
         smokeOpacity: 0.1,
         numCircles: 1,
@@ -19,8 +19,8 @@ $( document ).ready(function() {
         drawsPerFrame: 10,
         lineWidth: 2,
         speed: 1,
-        bgColorInner: "#2b2b2b",
-        bgColorOuter: "#000000"
+        bgColorInner: "#526D82",
+        bgColorOuter: "#27374D"
     });
 	$(".home").fadeIn(1500);
      
@@ -59,8 +59,8 @@ function postAPI(jsonArgs){
     for(let i = 0; i < jsonArgs.length; i++){
         jsonRequest.Item[jsonArgs[i][0]] = jsonArgs[i][1]
     }
-
-    fetch("https://0wha124295.execute-api.us-east-1.amazonaws.com/production/visit",{
+    //https://0wha124295.execute-api.us-east-1.amazonaws.com/production/visit
+    fetch("https:",{
         method: "POST",
         body: JSON.stringify(jsonRequest)
     }).catch(error => { console.log(error); });
